@@ -28,11 +28,11 @@ const AdminNavbar: React.FC<NavbarProps> = ({ setActiveComponent }) => {
                 <BootstrapNavbar.Toggle aria-controls="navbarNav" />
                 <BootstrapNavbar.Collapse id="navbarNav" className="justify-content-between">
                     <Nav className="me-auto">
-                        <Link href="/users" passHref legacyBehavior>
-                            <Nav.Link>User</Nav.Link>
+                        <Link href="#" passHref legacyBehavior>
+                            <Nav.Link onClick={() => setActiveComponent("users")}>User</Nav.Link>
                         </Link>
-                        <Link href="/recommendations" passHref legacyBehavior>
-                            <Nav.Link>Recommendations</Nav.Link>
+                        <Link href="#" passHref legacyBehavior>
+                            <Nav.Link onClick={() => setActiveComponent("recommendations")}>Recommendations</Nav.Link>
                         </Link>
 
                         <NavDropdown title="Subscription" id="navbarDropdownSubscription">
@@ -41,8 +41,8 @@ const AdminNavbar: React.FC<NavbarProps> = ({ setActiveComponent }) => {
                             >
                                 Add Subscription
                             </NavDropdown.Item>
-                            <Link href="/adminDashboard/manage-subscription" passHref legacyBehavior>
-                                <NavDropdown.Item>Manage Subscription</NavDropdown.Item>
+                            <Link href="#" passHref legacyBehavior>
+                                <NavDropdown.Item onClick={() => setActiveComponent("manage-subscription")} >Manage Subscription</NavDropdown.Item>
                             </Link>
                         </NavDropdown>
 
@@ -52,29 +52,29 @@ const AdminNavbar: React.FC<NavbarProps> = ({ setActiveComponent }) => {
                             >
                                 Create Blog
                             </NavDropdown.Item>
-                            <Link href="/edit-blog" passHref legacyBehavior>
-                                <NavDropdown.Item>Edit/Delete Blog</NavDropdown.Item>
+                            <Link href="#" passHref legacyBehavior>
+                                <NavDropdown.Item  onClick={() => setActiveComponent("editdelete-blog")}>Edit/Delete Blog</NavDropdown.Item>
                             </Link>
-                            <Link href="/create-news" passHref legacyBehavior>
-                                <NavDropdown.Item>Create News</NavDropdown.Item>
+                            <Link href="#" passHref legacyBehavior>
+                                <NavDropdown.Item onClick={() => setActiveComponent("createnews")}>Create News</NavDropdown.Item>
                             </Link>
                             <Link href="/edit-news" passHref legacyBehavior>
-                                <NavDropdown.Item>Edit/Delete News</NavDropdown.Item>
+                                <NavDropdown.Item onClick={() => setActiveComponent("editdelete-news")}>Edit/Delete News</NavDropdown.Item>
                             </Link>
                             <Link href="/create-course" passHref legacyBehavior>
-                                <NavDropdown.Item>Create Course</NavDropdown.Item>
+                                <NavDropdown.Item onClick={() => setActiveComponent("create-course")}>Create Course</NavDropdown.Item>
                             </Link>
                             <Link href="/edit-course" passHref legacyBehavior>
-                                <NavDropdown.Item>Edit/Delete Course</NavDropdown.Item>
+                                <NavDropdown.Item onClick={() => setActiveComponent("editDelete-course")} >Edit/Delete Course</NavDropdown.Item>
                             </Link>
                         </NavDropdown>
 
                         <NavDropdown title="Company" id="navbarDropdownCompany">
                             <Link href="/add-company" passHref legacyBehavior>
-                                <NavDropdown.Item>Add Company</NavDropdown.Item>
+                                <NavDropdown.Item onClick={() => setActiveComponent("add-company")}  >Add Company</NavDropdown.Item>
                             </Link>
                             <Link href="/manage-company" passHref legacyBehavior>
-                                <NavDropdown.Item>Manage Company</NavDropdown.Item>
+                                <NavDropdown.Item onClick={() => setActiveComponent("manage-company")}  >Manage Company</NavDropdown.Item>
                             </Link>
                         </NavDropdown>
                     </Nav>
