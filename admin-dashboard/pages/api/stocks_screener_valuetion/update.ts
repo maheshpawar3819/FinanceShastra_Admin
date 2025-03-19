@@ -10,6 +10,7 @@ export default async function updateStock(
   }
 
   const {
+    id,
     Symbol,
     MarketCap,
     MarketCapPercentage,
@@ -24,16 +25,16 @@ export default async function updateStock(
     EVEBITDA,
   } = req.body;
 
-  if (!Symbol) {
-    return res.status(400).json({ error: "Symbol is required for updating" });
+  if (!id) {
+    return res.status(400).json({ error: "id is required for updating" });
   }
 
   try {
     const query = `
       UPDATE stocks_screnner_valuetion 
-      SET MarketCap = ?, MarketCapPercentage = ?, PERatio = ?, PSRatio = ?, PBRatio = ?, 
+      SET Symbol = ?, MarketCap = ?, MarketCapPercentage = ?, PERatio = ?, PSRatio = ?, PBRatio = ?, 
           PFCFRatio = ?, Price = ?, EnterpriseValue = ?, EVRevenue = ?, EVEBIT = ?, EVEBITDA = ?
-      WHERE Symbol = ?
+      WHERE id = ?
     `;
 
     await connection.query(query, [
