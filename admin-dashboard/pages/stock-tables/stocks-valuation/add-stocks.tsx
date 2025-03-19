@@ -46,7 +46,7 @@ export default function AddStockRecord() {
           router.push("/stock-tables/stocks-valuation");
         }, 1000);
       }
-      
+
       const data = await res.json();
       setFormData({
         Symbol: "",

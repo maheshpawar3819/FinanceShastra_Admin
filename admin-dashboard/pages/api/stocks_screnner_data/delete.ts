@@ -5,19 +5,21 @@ export default async function deleteStock(
   req: NextApiRequest,
   res: NextApiResponse
 ): Promise<void> {
-  if (req.method === "DELETE") {
+  if (req.method !== "DELETE") {
     return res.status(405).json({ error: "Method Not Allowed" });
   }
 
   const { id } = req.body;
 
-  if (!id) {
+  const numId = Number(id);
+
+  if (!numId) {
     return res.status(400).json({ error: "ID is required for deletion" });
   }
 
   try {
     const query = "DELETE FROM stocks_screnner_data WHERE id=?";
-    await pool.execute(query, [id]);
+    await pool.execute(query, [numId]);
 
     //sending response
     res.status(200).json({ message: "Record deleted successfully" });

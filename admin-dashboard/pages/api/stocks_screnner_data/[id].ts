@@ -57,7 +57,7 @@ export default async function handler(
       } = req.body;
 
       const query = `
-        UPDATE stocks_screener_data 
+        UPDATE stocks_screnner_data 
         SET CompanyName = ?, LastTradedPrice = ?, ChangePercentage = ?, 
             MarketCap = ?, High52W = ?, Low52W = ?, Sector = ?, 
             CurrentPE = ?, IndexName = ?, RecordDate = ?, ROE = ?, PBV = ?, 

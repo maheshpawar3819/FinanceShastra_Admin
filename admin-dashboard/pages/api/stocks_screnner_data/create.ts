@@ -30,10 +30,11 @@ export default async function handler(
       DividendAmount,
       ROCE,
     } = req.body;
+    console.log(req.body);
 
     try {
       const query = `
-      INSERT INTO stocks_screener_data (
+      INSERT INTO stocks_screnner_data (
         CompanyName, LastTradedPrice, ChangePercentage, MarketCap, High52W, Low52W, 
         Sector, CurrentPE, IndexName, RecordDate, ROE, PBV, EV_EBITDA, 
         FiveYearSalesGrowth, FiveYearProfitGrowth, Volume, EPS, EPSGrowth, 
@@ -66,6 +67,7 @@ export default async function handler(
       ];
 
       const [result] = await pool.execute<ResultSetHeader>(query, values);
+
 
       if (result.affectedRows > 0) {
         res.status(200).json({
