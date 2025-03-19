@@ -43,7 +43,7 @@ export default function AddStockRecord() {
       } else {
         toast.success("Stock record added successfully!");
         setTimeout(() => {
-          router.push("/stocks-valuation");
+          router.push("/stock-tables/stocks-valuation");
         }, 1000);
       }
       

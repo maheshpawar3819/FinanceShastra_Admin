@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import connection from "@/utils/db";
+import pool from "@/utils/db";
 
 export default async function updateStock(
   req: NextApiRequest,
@@ -37,7 +37,7 @@ export default async function updateStock(
       WHERE id = ?
     `;
 
-    await connection.query(query, [
+    await pool.query(query, [
       MarketCap,
       MarketCapPercentage,
       PERatio,

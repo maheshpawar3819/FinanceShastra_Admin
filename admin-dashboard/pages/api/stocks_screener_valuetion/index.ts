@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import connection from "@/utils/db";
+import pool from "@/utils/db";
 import { StockScreenerValuation } from "@/types";
 import { RowDataPacket } from "mysql2";
 
@@ -10,7 +10,7 @@ export default async function handler(
 ) {
   if (req.method === "GET") {
     try {
-      const [rows] = await connection.query<
+      const [rows] = await pool.query<
         StockScreenerValuation[] & RowDataPacket[]
       >(`SELECT * FROM stocks_screnner_valuetion`);
 

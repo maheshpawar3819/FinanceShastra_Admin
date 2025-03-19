@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import connection from "@/utils/db";
+import pool from "@/utils/db";
 
 export default async function handler(
   req: NextApiRequest,
@@ -29,7 +29,7 @@ export default async function handler(
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
       `;
 
-      await connection.query(query, [
+      await pool.query(query, [
         Symbol,
         MarketCap,
         MarketCapPercentage,
