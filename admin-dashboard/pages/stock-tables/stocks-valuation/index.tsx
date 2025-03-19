@@ -69,7 +69,9 @@ export default function Dashboard() {
           <Button
             variant="default"
             className="mb-6"
-            onClick={() => router.push("/stocks-valuation/add-stocks")}
+            onClick={() =>
+              router.push("/stock-tables/stocks-valuation/add-stocks")
+            }
           >
             Add Stocks
           </Button>
@@ -140,7 +142,7 @@ export default function Dashboard() {
                         className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition"
                         onClick={() => {
                           router.push(
-                            `/stocks-valuation/edit-stocks?id=${record.id}`
+                            `/stock-tables/stocks-valuation/edit-stocks?id=${record.id}`
                           );
                         }}
                       >

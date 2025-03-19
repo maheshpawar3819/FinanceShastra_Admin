@@ -94,7 +94,7 @@ export default function UpdateStocks() {
 
       toast.success("Stock record updated successfully!");
       setTimeout(() => {
-        router.push("/stocks-valuation");
+        router.push("/stock-tables/stocks-valuation");
       }, 1000);
     } catch (error: any) {
       setErrorMessage(error.message || "An unexpected error occurred.");
@@ -119,7 +119,7 @@ export default function UpdateStocks() {
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {Object.keys(formData)
-              .filter((key) => key !== "id" && key !== "0") 
+              .filter((key) => key !== "id" && key !== "0")
               .map((key) => (
                 <div key={key} className="flex flex-col">
                   <label className="text-gray-700 font-semibold">{key}:</label>
