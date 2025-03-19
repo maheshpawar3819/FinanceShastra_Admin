@@ -1,6 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import connection from "@/utils/db";
-
+import pool from "@/utils/db";
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
@@ -13,7 +12,7 @@ export default async function handler(
   try {
     if (req.method === "GET") {
       // Fetch stock data by ID
-      const [rows] = await connection.query(
+      const [rows] = await pool.query(
         "SELECT * FROM stocks_screnner_valuetion WHERE id = ?",
         [stockId]
       );
@@ -44,7 +43,7 @@ export default async function handler(
         EVEBITDA,
       } = req.body;
 
-      await connection.query(
+      await pool.query(
         "UPDATE stocks_screnner_valuetion SET Symbol=?, MarketCap=?, MarketCapPercentage=?, PERatio=?, PSRatio=?, PBRatio=?, PFCFRatio=?, Price=?, EnterpriseValue=?, EVRevenue=?, EVEBIT=?, EVEBITDA=? WHERE id=?",
         [
           Symbol,

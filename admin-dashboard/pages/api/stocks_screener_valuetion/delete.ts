@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import connection from "@/utils/db";
+import pool from "@/utils/db";
 
 export default async function deleteStock(
   req: NextApiRequest,
@@ -17,7 +17,7 @@ export default async function deleteStock(
 
   try {
     const query = `DELETE FROM stocks_screnner_valuetion WHERE id = ?`;
-    await connection.query(query, [id]);
+    await pool.query(query, [id]);
 
     res.status(200).json({ message: "Record deleted successfully" });
   } catch (error) {
