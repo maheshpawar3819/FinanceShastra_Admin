@@ -19,7 +19,7 @@ import {
 
 export default function Dashboard() {
   const [data, setData] = useState<StockScreenerValuation[]>([]);
-  const [deleteSymbol, setDeleteSymbol] = useState<string | null>(null);
+  const [deleteId, setDeleteId] = useState<number | null>(null);
   const router = useRouter();
 
   useEffect(() => {
@@ -33,19 +33,19 @@ export default function Dashboard() {
 
   // Delete record only after confirmation
   const handleDelete = async () => {
-    if (!deleteSymbol) return;
+    if (!deleteId) return;
 
     try {
       const res = await fetch("/api/stocks_screener_valuetion/delete", {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ Symbol: deleteSymbol }),
+        body: JSON.stringify({ id: deleteId }),
       });
 
       if (res.ok) {
         toast.success("Stock deleted successfully!");
         setData((prevData) =>
-          prevData.filter((stock) => stock.Symbol !== deleteSymbol)
+          prevData.filter((stock) => stock.id !== deleteId)
         );
       } else {
         toast.error("An error occurred while deleting.");
@@ -55,7 +55,7 @@ export default function Dashboard() {
       toast.error("An error occurred while deleting.");
     }
 
-    setDeleteSymbol(null);
+    setDeleteId(null);
   };
 
   return (
@@ -98,7 +98,7 @@ export default function Dashboard() {
             <tbody>
               {data.length > 0 ? (
                 data.map((record) => (
-                  <tr key={record.Symbol}>
+                  <tr key={record.id}>
                     <td className="border border-gray-300 px-4 py-2">
                       {record.Symbol}
                     </td>
@@ -143,7 +143,7 @@ export default function Dashboard() {
                         <AlertDialogTrigger asChild>
                           <Button
                             className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition"
-                            onClick={() => setDeleteSymbol(record.Symbol)}
+                            onClick={() => setDeleteId(record.id)}
                           >
                             Delete
                           </Button>
@@ -154,12 +154,12 @@ export default function Dashboard() {
                               Confirm Deletion
                             </AlertDialogTitle>
                             <AlertDialogDescription>
-                              Are you sure you want to delete {deleteSymbol}?
+                              Are you sure you want to delete {record.Symbol}?
                             </AlertDialogDescription>
                           </AlertDialogHeader>
                           <AlertDialogFooter>
                             <AlertDialogCancel
-                              onClick={() => setDeleteSymbol(null)}
+                              onClick={() => setDeleteId(null)}
                             >
                               Cancel
                             </AlertDialogCancel>

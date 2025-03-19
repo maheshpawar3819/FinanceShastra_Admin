@@ -1,4 +1,5 @@
 export interface StockScreenerValuation {
+  id:number,
   Symbol: string;
   MarketCap: number;
   MarketCapPercentage: number;
@@ -14,6 +15,7 @@ export interface StockScreenerValuation {
 }
 
 export interface StockScreenerIncomeStatement {
+  id:number,
   Symbol: string;
   Revenue: number;
   RevenueGrowth: number;
@@ -24,6 +26,7 @@ export interface StockScreenerIncomeStatement {
 }
 
 export interface SectorWeightage {
+  id:number,
   Sector: string;
   NumberOfCompanies: number;
   Weightage: number;

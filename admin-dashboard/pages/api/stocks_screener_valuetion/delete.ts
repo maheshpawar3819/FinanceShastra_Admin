@@ -9,15 +9,15 @@ export default async function deleteStock(
     return res.status(405).json({ error: "Method Not Allowed" });
   }
 
-  const { Symbol } = req.body;
+  const { id } = req.body;
 
   if (!Symbol) {
     return res.status(400).json({ error: "ID is required for deletion" });
   }
 
   try {
-    const query = `DELETE FROM stocks_screnner_valuetion WHERE Symbol = ?`;
-    await connection.query(query, [Symbol]);
+    const query = `DELETE FROM stocks_screnner_valuetion WHERE id = ?`;
+    await connection.query(query, [id]);
 
     res.status(200).json({ message: "Record deleted successfully" });
   } catch (error) {
