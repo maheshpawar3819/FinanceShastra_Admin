@@ -1,12 +1,21 @@
-import React from 'react'
-import Navbar from '../../components/Navbar/Navbar'
+import React, { useState } from "react";
+import AdminNavbar from "../../components/Navbar/Navbar";
+import AddSubscription from "./subscription/AddSubscription";
+import CreateBlog from "../../components/Blog/CreateBlog";
 
-const dashboard = () => {
+const Dashboard: React.FC = () => {
+  const [activeComponent, setActiveComponent] = useState<string | null>(null);
+
   return (
     <div>
-      <Navbar/>
+      <AdminNavbar setActiveComponent={setActiveComponent} />
+      <div className="content">
+        {/* Conditional Rendering */}
+        {activeComponent === "addSubscription" && <AddSubscription />}
+        {activeComponent === "createBlog" && <CreateBlog />}
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default dashboard
+export default Dashboard;
