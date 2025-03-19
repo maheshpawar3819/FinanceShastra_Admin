@@ -1,12 +1,12 @@
-import AdminLayout  from "@/components/ui/AdminLayout";
-import "@/styles/globals.css";
-
+import { useEffect } from "react";
+import { useRouter } from "next/router";
 
 export default function Home() {
-  return (
-    <>
-      <AdminLayout>Welcome to the Admin Dashboard
-      </AdminLayout>
-    </>
-  );
+  const router = useRouter();
+
+  useEffect(() => {
+    router.push("/auth/login");
+  }, []);
+
+  return null;
 }
