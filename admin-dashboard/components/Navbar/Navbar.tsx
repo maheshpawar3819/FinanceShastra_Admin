@@ -28,7 +28,7 @@ const AdminNavbar: React.FC = () => {
                         <Link href="/recommendations" passHref legacyBehavior><Nav.Link>Recommendations</Nav.Link></Link>
 
                         <NavDropdown title="Subscription" id="navbarDropdownSubscription">
-                            <Link href="/adminDashboard/add-subscription" passHref legacyBehavior><NavDropdown.Item>Add Subscription</NavDropdown.Item></Link>
+                            <Link href="/dashboard/subscription/AddSubscription" passHref legacyBehavior><NavDropdown.Item>Add Subscription</NavDropdown.Item></Link>
                             <Link href="/adminDashboard/manage-subscription" passHref legacyBehavior><NavDropdown.Item>Manage Subscription</NavDropdown.Item></Link>
                         </NavDropdown>
 
