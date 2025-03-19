@@ -1,3 +1,28 @@
+export interface StockScreenerData {
+  id: number;
+  CompanyName: string;
+  LastTradedPrice: number;
+  ChangePercentage: number | null;
+  MarketCap: number | null;
+  High52W: number | null;
+  Low52W: number | null;
+  Sector: string;
+  CurrentPE: number | null;
+  IndexName?: string | null; 
+  RecordDate: string; 
+  ROE: number | null;
+  PBV: number | null;
+  EV_EBITDA: number | null;
+  FiveYearSalesGrowth: number | null;
+  FiveYearProfitGrowth: number | null;
+  Volume: number | null;
+  EPS: number | null;
+  EPSGrowth: number | null;
+  DividendYield: number | null;
+  DividendAmount: number | null;
+  ROCE: number | null;
+}
+
 export interface StockScreenerValuation {
   id:number,
   Symbol: string;
