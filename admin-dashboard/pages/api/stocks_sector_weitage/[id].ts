@@ -6,11 +6,12 @@ export default async function handler(
   res: NextApiResponse
 ): Promise<void> {
   const { id } = req.query;
+  console.log(id)
   if (!id) return res.status(400).json({ message: "Stock ID is required" });
 
   //id convert in the number
   const stockId = Number(id);
-
+ 
   try {
     if (req.method === "GET") {
       //fetch stock deta
@@ -32,14 +33,16 @@ export default async function handler(
       //update stock data
       const { Sector, NumberOfCompanies, Weightage, MarketCap } = req.body;
 
+      console.log(Sector, NumberOfCompanies, Weightage, MarketCap);
       await pool.query(
         `UPDATE stocks_sector_weitage SET
         Sector = ?, NumberOfCompanies = ?, Weightage = ?, MarketCap = ? WHERE id = ?`,
         [
-          Sector || null,
-          NumberOfCompanies || null,
-          Weightage || null,
-          MarketCap || null,
+          Sector,
+          NumberOfCompanies,
+          Weightage,
+          MarketCap,
+          stockId
         ]
       );
 

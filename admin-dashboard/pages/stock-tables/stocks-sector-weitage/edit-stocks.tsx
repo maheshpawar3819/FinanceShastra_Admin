@@ -3,22 +3,17 @@ import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import "@/styles/globals.css";
 import { Toaster, toast } from "sonner";
-import { StockScreenerIncomeStatement, StockScreenerValuation } from "@/types";
+import { SectorWeightage } from "@/types";
 
 export default function UpdateStocks() {
   const router = useRouter();
   const { id } = router.query;
-  const [formData, setFormData] = useState<StockScreenerIncomeStatement>({
-    id: 0,
-    Symbol: "",
-    Revenue: 0,
-    RevenueGrowth: 0,
-    GrossProfit: 0,
-    OperatingIncome: 0,
-    NetIncome: 0,
-    EBITDA: 0,
-    EPS_Diluted: 0,
-    EPSDilutedGrowth: 0,
+  const [formData, setFormData] = useState<SectorWeightage>({
+    id:0,
+    Sector: " ",
+    NumberOfCompanies: 0,
+    Weightage: 0,
+    MarketCap: 0,
   });
 
   const [loading, setLoading] = useState<boolean>(true);
@@ -30,7 +25,7 @@ export default function UpdateStocks() {
 
     async function fetchStockData() {
       try {
-        const res = await fetch(`/api/stocks_screener_inc_stet/${id}`, {
+        const res = await fetch(`/api/stocks_sector_weitage/${id}`, {
           method: "GET",
         });
         if (!res.ok) throw new Error("Failed to fetch stock details.");
@@ -39,17 +34,12 @@ export default function UpdateStocks() {
         console.log(data);
 
         setFormData((prev: any) => ({
-          ...prev, // Keep previous state
-          id: 0,
-          Symbol: data[0].Symbol,
-          Revenue: data[0].Revenue,
-          RevenueGrowth: data[0].RevenueGrowth,
-          GrossProfit: data[0].GrossProfit,
-          OperatingIncome: data[0].OperatingIncome,
-          NetIncome: data[0].NetIncome,
-          EBITDA: data[0].EBITDA,
-          EPS_Diluted: data[0].EPS_Diluted,
-          EPSDilutedGrowth: data[0].EPSDilutedGrowth,
+          ...prev, 
+          id: data[0].id, 
+          Sector: data[0].Sector,
+          NumberOfCompanies: data[0].NumberOfCompanies,
+          Weightage: data[0].Weightage,
+          MarketCap: data[0].MarketCap,
         }));
       } catch (error: any) {
         setErrorMessage(error.message);
@@ -76,7 +66,7 @@ export default function UpdateStocks() {
     setErrorMessage(null);
 
     try {
-      const res = await fetch(`/api/stocks_screener_inc_stet/${id}`, {
+      const res = await fetch(`/api/stocks_sector_weitage/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -89,7 +79,7 @@ export default function UpdateStocks() {
 
       toast.success("Stock record updated successfully!");
       setTimeout(() => {
-        router.push("/stock-tables/stocks-screener-inc-stet");
+        router.push("/stock-tables/stocks-sector-weitage");
       }, 1000);
     } catch (error: any) {
       setErrorMessage(error.message || "An unexpected error occurred.");
@@ -119,7 +109,7 @@ export default function UpdateStocks() {
                 <div key={key} className="flex flex-col">
                   <label className="text-gray-700 font-semibold">{key}:</label>
                   <input
-                    type={key === "Symbol" ? "text" : "number"}
+                    type={key === "Sector" ? "text" : "number"}
                     name={key}
                     value={formData[key as keyof typeof formData] ?? ""}
                     onChange={handleChange}

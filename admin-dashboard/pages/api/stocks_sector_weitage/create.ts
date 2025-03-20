@@ -8,19 +8,20 @@ export default async function handler(
 ): Promise<void> {
   if (req.method === "POST") {
     const { Sector, NumberOfCompanies, Weightage, MarketCap } = req.body;
+    console.log(Sector, NumberOfCompanies, Weightage, MarketCap);
 
     try {
       const query = `INSERT INTO stocks_sector_weitage (Sector, NumberOfCompanies, Weightage, MarketCap) VALUES (?,?,?,?)`;
 
       const values = [
-        Sector || null,
-        NumberOfCompanies || null,
-        Weightage || null,
-        MarketCap || null,
+        Sector,
+        NumberOfCompanies,
+        Weightage,
+        MarketCap,
       ];
-
+      console.log(query,values);
       const [result] = await pool.execute<ResultSetHeader>(query, values);
-
+     
       if (result.affectedRows > 0) {
         res.status(200).json({
           success: true,
