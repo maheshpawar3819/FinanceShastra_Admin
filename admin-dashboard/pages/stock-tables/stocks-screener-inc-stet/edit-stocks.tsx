@@ -66,7 +66,7 @@ export default function UpdateStocks() {
     const { name, value } = event.target;
     setFormData({
       ...formData,
-      [name]: name === "Sector" ? value : parseFloat(value) || 0,
+      [name]: name === "Symbol" ? value : parseFloat(value) || 0,
     });
   }
 

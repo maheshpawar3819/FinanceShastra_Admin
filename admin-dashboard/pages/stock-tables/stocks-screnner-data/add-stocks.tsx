@@ -91,7 +91,7 @@ export default function AddStockRecord() {
     event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) {
     const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value === "" ? null : value }); // Handle nullable fields
+    setFormData({ ...formData, [name]: value === "" ? null : value });
   }
 
   return (

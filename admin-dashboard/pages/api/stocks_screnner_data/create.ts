@@ -45,29 +45,28 @@ export default async function handler(
       const values = [
         CompanyName,
         LastTradedPrice,
-        ChangePercentage || null,
-        MarketCap || null,
-        High52W || null,
-        Low52W || null,
+        ChangePercentage,
+        MarketCap,
+        High52W,
+        Low52W,
         Sector,
-        CurrentPE || null,
-        IndexName || null,
+        CurrentPE,
+        IndexName,
         RecordDate,
-        ROE || null,
-        PBV || null,
-        EV_EBITDA || null,
-        FiveYearSalesGrowth || null,
-        FiveYearProfitGrowth || null,
-        Volume || null,
-        EPS || null,
-        EPSGrowth || null,
-        DividendYield || null,
-        DividendAmount || null,
-        ROCE || null,
+        ROE,
+        PBV,
+        EV_EBITDA,
+        FiveYearSalesGrowth,
+        FiveYearProfitGrowth,
+        Volume,
+        EPS,
+        EPSGrowth,
+        DividendYield,
+        DividendAmount,
+        ROCE,
       ];
 
       const [result] = await pool.execute<ResultSetHeader>(query, values);
-
 
       if (result.affectedRows > 0) {
         res.status(200).json({
