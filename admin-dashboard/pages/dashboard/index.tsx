@@ -10,12 +10,13 @@ import Recommendation from '../../components/recommendation'
 
 
 const Dashboard: React.FC = () => {
-  const [activeComponent, setActiveComponent] = useState<string | null>(null);
+  const [activeComponent, setActiveComponent] = useState<string | null>('users');
 
   return (
     <div>
       <AdminNavbar setActiveComponent={setActiveComponent} />
       <div className="content">
+        {}
         {/* Conditional Rendering */}
         {activeComponent === "addSubscription" && <AddSubscription />}
         {activeComponent === "manage-subscription" && <ManageSubscription />}

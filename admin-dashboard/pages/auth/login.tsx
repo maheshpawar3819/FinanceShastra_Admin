@@ -14,7 +14,7 @@ const Login: React.FC = () => {
 
     if (username === "finance_admin" && password === "admin@123") {
       localStorage.setItem("admin", "true");
-      router.push("/dashboard");
+      router.push("/dashboard#");
     } else {
       setError("Invalid credentials!");
     }
