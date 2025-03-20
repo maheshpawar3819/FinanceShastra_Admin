@@ -8,8 +8,8 @@ export interface StockScreenerData {
   Low52W: number | null;
   Sector: string;
   CurrentPE: number | null;
-  IndexName?: string | null; 
-  RecordDate: string; 
+  IndexName?: string | null;
+  RecordDate: string;
   ROE: number | null;
   PBV: number | null;
   EV_EBITDA: number | null;
@@ -24,7 +24,7 @@ export interface StockScreenerData {
 }
 
 export interface StockScreenerValuation {
-  id:number,
+  id: number;
   Symbol: string;
   MarketCap: number;
   MarketCapPercentage: number;
@@ -40,18 +40,20 @@ export interface StockScreenerValuation {
 }
 
 export interface StockScreenerIncomeStatement {
-  id:number,
+  id: number;
   Symbol: string;
   Revenue: number;
   RevenueGrowth: number;
   GrossProfit: number;
   OperatingIncome: number;
   NetIncome: number;
+  EBITDA: number;
   EPS_Diluted: number;
+  EPSDilutedGrowth: number;
 }
 
 export interface SectorWeightage {
-  id:number,
+  id: number;
   Sector: string;
   NumberOfCompanies: number;
   Weightage: number;

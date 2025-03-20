@@ -43,15 +43,18 @@ export default async function handler(
       } = req.body;
 
       await pool.query(
-        `UPDATE stocks_screener_incomeStatement SET  Symbol,
-        Revenue = ?,
-        RevenueGrowth = ?,
-        GrossProfit = ?,
-        OperatingIncome = ?,
-        NetIncome = ?,
-        EBITDA = ?,
-        EPS_Diluted = ?,
-        EPSDilutedGrowth = ? WHERE id = ?`,
+        `UPDATE stocks_screener_incomeStatement 
+        SET
+            Symbol = ?,
+            Revenue = ?,
+            RevenueGrowth = ?,
+            GrossProfit = ?,
+            OperatingIncome = ?,
+            NetIncome = ?,
+            EBITDA = ?,
+            EPS_Diluted = ?,
+            EPSDilutedGrowth = ?
+        WHERE id = ?`,
         [
           Symbol,
           Revenue,
